@@ -2,6 +2,8 @@
 
   var root = this;
 
+  var _ = require( "lodash" );
+
   var asdf = function(obj) {
   };
 
@@ -34,12 +36,11 @@
       return o2;
     };
 
-    if ( asdf.classOf( sep ) === 'Undefined' ) sep = "";
+    if ( _.isUndefined( sep ) ) sep = "";
     if ( asdf.classOf( o ) !== 'Object' ) return o;
 
     return _.reduce( _.keys( o ), _flatten, {} );
   };
-
 
 }).call(this);
 

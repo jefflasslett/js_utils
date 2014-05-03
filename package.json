@@ -1,0 +1,25 @@
+{
+  "name": "js_utils",
+  "version": "1.0.0",
+  "description": "A couple of useful routines",
+  "main": "utils.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jefflasslett/js_utils.git"
+  },
+  "dependencies ": {
+    "lodash" : "latest",
+    "mocha" : "latest",
+    "chai" : "latest"
+  },
+  "author": "Jeff Lasslett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jefflasslett/js_utils/issues"
+  },
+  "homepage": "https://github.com/jefflasslett/js_utils",
+  "private" : true
+}

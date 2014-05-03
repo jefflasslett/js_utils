@@ -1,37 +1,39 @@
+asdf = require( '../utils' );
+
 describe( "js_utils (aka `asdf`)", function () {
 
   describe( "#classOf", function () {
 
     it( "returns Null for arg of `null`", function () {
-      expect( asdf.classOf( null ) ).toEqual( "Null" );
+      expect( asdf.classOf( null ) ).to.equal( "Null" );
     });
 
     it( "returns Undefined for arg of `undefined`", function () {
-      expect( asdf.classOf( undefined ) ).toEqual( "Undefined" );
+      expect( asdf.classOf( undefined ) ).to.equal( "Undefined" );
     });
 
     it( "returns Boolean for arg of `true`", function () {
-      expect( asdf.classOf( true ) ).toEqual( "Boolean" );
+      expect( asdf.classOf( true ) ).to.equal( "Boolean" );
     });
 
     it( "returns Boolean for arg of `false`", function () {
-      expect( asdf.classOf( false ) ).toEqual( "Boolean" );
+      expect( asdf.classOf( false ) ).to.equal( "Boolean" );
     });
 
     it( "returns Number for arg of `3.14`", function () {
-      expect( asdf.classOf( 3.14 ) ).toEqual( "Number" );
+      expect( asdf.classOf( 3.14 ) ).to.equal( "Number" );
     });
 
     it( "returns Object for arg of `{}`", function () {
-      expect( asdf.classOf( {} ) ).toEqual( "Object" );
+      expect( asdf.classOf( {} ) ).to.equal( "Object" );
     });
 
     it( "returns String for arg of `\"\"`", function () {
-      expect( asdf.classOf( "" ) ).toEqual( "String" );
+      expect( asdf.classOf( "" ) ).to.equal( "String" );
     });
 
     it( "returns Array for arg of `[]`", function () {
-      expect( asdf.classOf( [] ) ).toEqual( "Array" );
+      expect( asdf.classOf( [] ) ).to.equal( "Array" );
     });
 
   });
@@ -70,8 +72,7 @@ describe( "js_utils (aka `asdf`)", function () {
                    , "b.b.b" : []
                    };
 
-      expect( asdf.flatten( input, "" ) ).toEqual( output );
-
+      expect( asdf.flatten( input, "" ) ).to.eql( output );
     });
 
   });
