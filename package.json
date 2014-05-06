@@ -1,19 +1,19 @@
 {
-  "name": "js_utils",
+  "name": "asdf",
   "version": "1.0.0",
   "description": "A couple of useful routines",
   "main": "utils.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "make test"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/jefflasslett/js_utils.git"
   },
   "dependencies ": {
-    "lodash" : "latest",
-    "mocha" : "latest",
-    "chai" : "latest"
+    "lodash" : "2.4.x",
+    "mocha" : "1.18.x",
+    "chai" : "1.9.x"
   },
   "author": "Jeff Lasslett",
   "license": "MIT",
