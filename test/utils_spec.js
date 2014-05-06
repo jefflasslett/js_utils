@@ -72,8 +72,58 @@ describe( "js_utils (aka `asdf`)", function () {
                    , "b.b.b" : []
                    };
 
-      expect( asdf.flatten( input, "" ) ).to.eql( output );
+      expect( asdf.flatten( input, null, "." ) ).to.eql( output );
     });
+
+    it( "flattens IMAP mailbox into a flat key-value dictionary", function () {
+
+      var input = { "Archives" : { "attribs": [ '\\HasChildren' ]
+                                 , "delimiter": '.'
+                                 , "children": { '2014': {} }
+                                 , "parent": null
+                                 }
+                  , "Trash": { "attribs": [ '\\HasNoChildren', '\\Trash' ]
+                             , "delimiter": '.'
+                             , "children": null
+                             , "parent": null
+                             , "special_use_attrib": '\\Trash'
+                             }
+                  , "Sent": { "attribs": [ '\\HasNoChildren', '\\Sent' ]
+                            , "delimiter": '.'
+                            , "children": null
+                            , "parent": null
+                            , "special_use_attrib": '\\Sent'
+                            }
+                  , "INBOX": { "attribs": [ '\\HasNoChildren' ]
+                             , "delimiter": '.'
+                             , "children": null
+                             , "parent": null
+                             }
+                  };
+
+      var output = { "Archives/attribs": [ '\\HasChildren' ]
+                   , "Archives/delimiter": '.'
+                   //, "/Archives/children/2014": {}
+                   , "Archives/parent": null
+                   , "Trash/attribs": [ '\\HasNoChildren', '\\Trash' ]
+                   , "Trash/delimiter": '.'
+                   , "Trash/children": null
+                   , "Trash/parent": null
+                   , "Trash/special_use_attrib": '\\Trash'
+                   , "Sent/attribs": [ '\\HasNoChildren', '\\Sent' ]
+                   , "Sent/delimiter": '.'
+                   , "Sent/children": null
+                   , "Sent/parent": null
+                   , "Sent/special_use_attrib": '\\Sent'
+                   , "INBOX/attribs": [ '\\HasNoChildren' ]
+                   , "INBOX/delimiter": '.'
+                   , "INBOX/children": null
+                   , "INBOX/parent": null
+                   };
+
+      expect( asdf.flatten( input, null, "/" ) ).to.eql( output );
+    });
+
 
   });
 
