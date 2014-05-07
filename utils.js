@@ -21,7 +21,7 @@
     return c;
   };
 
-  asdf.flatten = function (o, k, sep ) {
+  asdf.flatten = function (o, k, sep, parents ) {
 
     var _flatten = function ( o2, k2 ) {
 
@@ -31,7 +31,9 @@
         key_prefix = k + sep;
       }
 
-      var _o2 = asdf.flatten( o[ k2 ], key_prefix + k2, sep );
+      parents.push( o );
+      var _o2 = asdf.flatten( o[ k2 ], key_prefix + k2, sep, parents );
+      parents.pop( o );
 
       if ( asdf.classOf( _o2 ) === 'Object' ) {
         _.each( _o2, function ( val, key ) { o2[ key ] = val; } );
@@ -42,6 +44,12 @@
 
       return o2;
     };
+
+    if ( _.isUndefined( parents ) ) {
+      parents = [];
+    } else {
+      if ( _.contains( parents, o ) ) return "cycle";
+    }
 
     if ( _.isUndefined( sep ) ) sep = "";
     if ( asdf.classOf( o ) !== 'Object' ) return o;

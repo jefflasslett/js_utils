@@ -124,7 +124,20 @@ describe( "js_utils (aka `asdf`)", function () {
       expect( asdf.flatten( input, null, "/" ) ).to.eql( output );
     });
 
+    it ( "detects cycles in the nested objects", function () {
 
+      var a = {};
+      a['a'] = {};
+      a['a']['b'] = {};
+      a['a']['b']['c'] = a;
+
+
+      var input = a
+
+      var output = { "a.b.c" : "cycle" };
+
+      expect( asdf.flatten( input, null, "." ) ).to.eql( output );
+    });
   });
 
 });
